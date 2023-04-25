@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { TextField, Button, Container } from "@mui/material";
+// import { useCookies } from "react-cookie";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -9,6 +10,7 @@ const Login = () => {
     username: "",
     password: "",
   });
+  // const [cookies, setCookie] = useState(useCookies(["user"]));
 
   const handleTextChange = (e) => {
     const { name, value } = e.target;
@@ -20,10 +22,23 @@ const Login = () => {
     });
   };
 
+
+  // Challenge
+  // The button should say LogIn where there is no cookie
+  // After login, the button should say LogOut
+  // When LogOut, the cookie should either be deleted set to null
+
   const login = (e) => {
     e.preventDefault();
     // set cookie here
-    // set loggedIn = true and max-age = 60*1000 (one minute)
+    // set loggedIn = true and max-age = 60*1000 milliseconds (one minute)
+
+    document.cookie = "loggedin=true; max-age=60*1000";
+    // document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+
+    
+
+    
 
     navigate("/");
   };
